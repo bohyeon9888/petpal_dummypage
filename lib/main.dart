@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import './widgets/navbar.dart';
-import './widgets/section.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -108,87 +106,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    final double deviceWidth = MediaQuery.of(context).size.width;
-    final double deviceHeight = MediaQuery.of(context).size.height -
-        AppBar().preferredSize.height -
-        kBottomNavigationBarHeight - // navbar
-        MediaQuery.of(context).viewPadding.top;
-
-    final appbar = AppBar(
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: AppColor.whiteColor,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-      backgroundColor: AppColor.whiteColor,
-      //toolbarHeight: MediaQuery.of(context).viewPadding.top,
-      iconTheme: const IconThemeData(color: AppColor.greenTambourine),
-      elevation: 0,
-      title: Image.asset(
-        'assets/logos/petpal_text.png',
-        //width: deviceWidth * 0.7,
-        height: AppBar().preferredSize.height,
-      ),
-      actions: <Widget>[
-        IconButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text('My Page')));
-            },
-            icon: const Icon(
-              Icons.account_circle_outlined,
-              size: 35,
-            ),
-            tooltip: 'My Page')
-      ],
-    );
-
-    return Scaffold(
-      appBar: appbar,
-      body: MainPage(deviceHeight: deviceHeight, deviceWidth: deviceWidth),
-      bottomNavigationBar: NavBar(
-        currentIndex: 0,
-      ),
-    );
-  }
-}
-
-class MainPage extends StatelessWidget {
-  final double deviceWidth;
-  final double deviceHeight;
-  MainPage({
-    super.key,
-    required this.deviceHeight,
-    required this.deviceWidth,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Section(courseName: "Training", deviceHeight: deviceHeight, deviceWidth: deviceWidth),
-            Section(courseName: "Body Language", deviceHeight: deviceHeight, deviceWidth: deviceWidth),
-            Section(courseName: "Something", deviceHeight: deviceHeight, deviceWidth: deviceWidth),
-            Section(courseName: "Extra", deviceHeight: deviceHeight, deviceWidth: deviceWidth),
-          ],
-        ),
-      ),
+      home: HomeScreen(),
     );
   }
 }

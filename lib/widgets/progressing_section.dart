@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
 
-class Section extends StatelessWidget {
+class ProgressingSection extends StatelessWidget {
   final String courseName;
   final double deviceHeight;
   final double deviceWidth;
-  Section({
+  
+  ProgressingSection({
     super.key,
     required this.courseName,
     required this.deviceHeight,
