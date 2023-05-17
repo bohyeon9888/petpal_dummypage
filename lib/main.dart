@@ -39,19 +39,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
@@ -87,19 +74,49 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
 
-    final pagebody = const Center(
-      child: Text(
-        'This is the home page',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
-
     return Scaffold(
       appBar: appbar,
-      body: pagebody,
+      body: const MainPage(),
       bottomNavigationBar: NavBar(
         currentIndex: 0,
       ),
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          flex: 7,
+          child: Container(
+            color: AppColor.whiteColor,
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            color: AppColor.whiteColor,
+            // ignore: prefer_const_constructors
+            child: FractionallySizedBox(
+              heightFactor: 0.3,
+              alignment: FractionalOffset.center,
+              child: const Divider(
+                  indent: 5, endIndent: 5, color: Colors.grey, thickness: 2.3),
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 7,
+          child: Container(
+            color: AppColor.whiteColor,
+          ),
+        )
+      ],
     );
   }
 }
