@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import './widgets/navbar.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -95,6 +97,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: appbar,
       body: pagebody,
+      bottomNavigationBar: NavBar(
+        currentIndex: 0,
+      ),
     );
   }
 }
