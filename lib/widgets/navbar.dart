@@ -18,7 +18,7 @@ class NavBar extends StatelessWidget {
         break;
 
       case 2:
-        if (currentIndex != 1) {}
+        if (currentIndex != 2) {}
         break;
     }
   }
