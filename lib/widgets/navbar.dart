@@ -1,20 +1,37 @@
 import 'package:flutter/material.dart';
 
 import 'package:petpal_dummy/main.dart';
+import '../screens/home_screen.dart';
+import '../screens/category_screen.dart';
 
 class NavBar extends StatelessWidget {
   final int currentIndex;
-  NavBar({required this.currentIndex});
+  final double deviceWidth;
+  final double deviceHeight;
+  NavBar({
+    required this.currentIndex,
+    required this.deviceHeight,
+    required this.deviceWidth,
+  });
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(BuildContext context, int index) {
     switch (index) {
       case 0:
-        if (currentIndex != 0) {}
+        if (currentIndex != 0) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+        }
         break;
       case 1:
-        if (currentIndex != 1) {}
+        if (currentIndex != 1) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => CategoryScreen(deviceHeight: deviceHeight, deviceWidth: deviceWidth)),
+          );
+        }
         break;
-
       case 2:
         if (currentIndex != 2) {}
         break;
@@ -40,7 +57,7 @@ class NavBar extends StatelessWidget {
       ],
       backgroundColor: AppColor.whiteColor,
       currentIndex: currentIndex,
-      onTap: (index) => _onItemTapped(index),
+      onTap: (index) => _onItemTapped(context, index),
       selectedItemColor: AppColor.greenTambourine,
     );
   }

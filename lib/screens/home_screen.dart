@@ -52,6 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: HomeBody(deviceHeight: deviceHeight, deviceWidth: deviceWidth),
       bottomNavigationBar: NavBar(
         currentIndex: 0,
+        deviceHeight: deviceHeight,
+        deviceWidth: deviceWidth,
       ),
     );
   }
